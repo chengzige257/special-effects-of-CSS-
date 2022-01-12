@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试绝对相对定位</title>
+    <style>
+        .div1{
+            /* width: 200px;
+            height: 200px; */
+            background-color:red;
+            
+        }
+        /* .div1::after{
+            content: "";
+            display: table;
+            clear:both;
+        } */
+        .div2{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color:green;
+        }
+        .div3{
+            content: "";
+            /* position: absolute; */
+            /* width: 100px;
+            height: 100px; */
+            background-color:blue;
+            clear:both;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">
+        <div class="div2"></div>
+        <div class="div3"></div>
+    </div>
+</body>
+</html>
+
+<!--结论：
+一，绝对定位会脱离文档流，跟float浮动不一样的是，文字不会出现环绕效果
+二，前一个元素开启绝对定位后，后面的元素会挤上去（遮盖效果，不会文字环绕）。
+三，
+-->

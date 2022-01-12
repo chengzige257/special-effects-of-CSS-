@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+/* 定义font-family时,最好在最后加一个sans-serif,这样如果所列出的字体都不能用，则默认的sans-serif字体能保证调用; */
+:root{
+    --black: #333;
+    --white: #fff;
+}
+.dark{
+    --black: #fff;
+    --white: #333;
+}
+header{
+    position: absolute;/*绝对定位*/
+    display:flex;
+    justify-content:space-between;
+    align-items: center;/*子元素在交叉轴居中（垂直方向居中）*/
+    width: 100%;
+    padding: 40px 100px;
+    z-index: 10000;
+}
+
+header .logo {
+    position: relative;/*相对定位*/
+    display: inline-flex;/*行内元素也可以使用flex布局，这个Logo包在a标签里面*/
+    color: var(--black);
+    text-decoration: none;/*去掉因为a链结标签的下划线*/
+    font-size: 2em;/*字体大小*/
+    font-weight: 700;/*字体粗细*/
+    letter-spacing: 0.05em;/*增加文件的间距*/
+    text-transform: uppercase;/*大写字母显示*/
+}
+
+.rightSide{
+    display: flex;
+}
+
+.btns{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;/*点上去光标变成手指,cursor指定光标的样式*/
+    margin-left: 10px;
+}
+
+.btns ion-icon {
+    font-size: 1.5em;
+    color: var(--black);
+}
+
+.btns.menuToggle ion-icon{
+    font-size: 3em;/*改变了图标大小*/
+}
+
+.btns ion-icon:nth-child(2){/*没点按钮，先隐藏太阳*/
+    display: none;
+}
+
+.btns.active ion-icon:nth-child(2){/*点了按钮展示太阳*/
+    display: block;
+}
+
+.btns.active ion-icon:nth-child(1){/*点了按钮，隐藏月亮*/
+    display: none;
+}
+
+.main{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;/*保证main这个容器，有高度，不然，video绝对定位会丢失高度变为0，导致不能显示*/
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    /* overflow: hidden; 可以用这个代替下面的height:100%来消除上下滚动条*/
+}
+
+.main video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;/*子元素的宽度就是父元素的宽度*/
+    height: 100%;/*子元素的高度就是父元素的高度*/
+    object-fit: cover;
+}
+
+.mask{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;/*子元素的宽度就是父元素的宽度*/
+    height: 100%;/*子元素的高度就是父元素的高度*/
+    z-index: 2;
+    user-select: none;/*用户不能选中图片*/
+    mix-blend-mode: screen;
+}
+
+.dark .mask{
+    filter: invert(1);/*反色，黑变成白，白变黑*/
+    mix-blend-mode: multiply;
+}
+
+.main h2{
+    position: absolute;
+    z-index: 3;
+    font-size: 16vw;
+    color: #fff;
+    user-select: none;/*用户不能选中图片*/
+    text-shadow: 0 20px 30px rgba(0,0,0,0.2);/*f浮起的效果*/
+}
+
+.navigation{
+    position: absolute;
+    top: 0;
+    left: -100%;/*侧边栏就到了section(class="main")的左边*/
+    width: 100%;/*子元素的宽度就是父元素的宽度*/
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: var(--white);
+    z-index: 4;
+    transition: 0.5s;/*通过平移变换实现过度*/
+}
+
+.navigation.active{
+    left: 0;
+}
+
+.navigation li{
+    list-style: none;/*去掉li前面的小圆点*/
+}
+
+.navigation li a{
+    display: inline-flex;
+    margin: 5px 0;
+    font-size: 1.25em;
+    text-decoration: none;/*去掉下划线*/
+    color: var(--black);
+    padding: 5px 20px;
+    border-radius:40px;/*圆角*/
+}
+
+.navigation li a:hover{/*鼠标移上去的样式*/
+    background: var(--black);
+    color: var(--white);
+}
+
+@media (max-width: 768px){
+    header{
+        padding: 20px;
+    }
+}

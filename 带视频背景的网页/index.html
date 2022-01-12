@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Make Website with Video Background</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header><!--开启了绝对定位-->
+        <a href="#" class="logo">logo</a>
+        <div class="rightSide">
+            <div class="btns dayNight">
+                <ion-icon name="moon-outline"></ion-icon>
+                <ion-icon name="sunny-outline"></ion-icon>
+            </div>
+            <div class="btns menuToggle">
+                <ion-icon name="menu-outline"></ion-icon>
+                <ion-icon name="close-outline"></ion-icon>
+            </div>
+            <!-- menuToggle菜单切换 -->
+        </div>
+    </header>
+
+    <section class="main"><!--开启了相对定位-->
+        <video src="video.mp4" autoplay loop muted type="mp4"></video>
+        <!--muted规定视频应该被静音-->
+        <img src="mask.jpg" class="mask"><!--不要添加alt属性-->
+        <h2>Ocean</h2>
+    </section>
+
+    <!--侧边栏-->
+    <ul class="navigation">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Package</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!--https://ionic.io/ionicons这个网站的图标  -->
+    <script>
+        //查询出各个标签
+        let dayNight = document.querySelector('.dayNight');
+        let menuToggle = document.querySelector('.menuToggle');
+        let body = document.querySelector('body');
+        let navigation = document.querySelector('.navigation');
+        //如果classList中存在给定的值，删除它，否则，添加它
+        dayNight.onclick = function(){
+            body.classList.toggle('dark')
+            dayNight.classList.toggle('active')
+        }
+        menuToggle.onclick = function(){
+            menuToggle.classList.toggle('active');
+            navigation.classList.toggle('active');
+        }
+        
+    </script>
+</body>
+</html>
