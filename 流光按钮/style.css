@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: #000;
+}
+a{
+    text-decoration: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;/*相对于左上角移动*/
+    transform: translate(-50%, -50%);/*相对于自身的长宽移动，position和transform相互配合保证按钮在正中间的位置*/
+    font-size:24px;
+    background: linear-gradient(90deg, #03a9f4,#f441a5,#ffeb3b,#03a9f4);/*线性渐变*/
+    width: 400px;
+    height:100px;
+    line-height: 100px;/*行高100px，a标签高度也是一百，这样就是垂直居中了*/
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;/*大写*/
+    border-radius: 50px;/*高是100，边角圆弧半径50，这样就是胶囊状*/
+    background-size: 400%;/*背景的四种颜色放大了4倍*/
+    z-index: 1;
+}
+/*做一个图层实现发光的效果，before和after伪元素都可以*/
+a::before{
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: -5px;
+    bottom: -5px;
+    right: -5px;/*少了这四个方向的任何一个都达不到和a标签差不多大，a标签400*100，before就是410*110*/
+    border-radius: 50px;/*也设置成一样的*/
+    background: linear-gradient(90deg, #03a9f4,#f441a5,#ffeb3b,#03a9f4);/*一样的*/
+    background-size: 400%;/*一样的*/
+    filter:blur(20px);/*设置滤镜，blur是模糊滤镜*/
+    z-index: -1;
+}
+
+a:hover::before{/*鼠标放到a标签时候的伪元素的动画*/
+    animation: sun 8s infinite;
+}
+
+a:hover {/*鼠标放到a标签时候的a标签的动画*/
+    animation: sun 8s infinite;
+}
+
+@keyframes sun{
+    100%{
+        background-position: -400% 0;/*因为放大了4倍，所以x轴平移平移400%*/
+    }
+}
