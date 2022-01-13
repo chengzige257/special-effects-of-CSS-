@@ -87,7 +87,7 @@ header .logo {
     left: 0;
     width: 100%;/*子元素的宽度就是父元素的宽度*/
     height: 100%;/*子元素的高度就是父元素的高度*/
-    object-fit: cover;
+    object-fit: cover;/*保持原有尺寸比例。但部分内容可能被剪切。*/
 }
 
 .mask{
