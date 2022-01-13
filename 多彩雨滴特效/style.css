@@ -1,0 +1,37 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    position: relative;
+    background-color: #000;
+    height: 100vh;
+    overflow: hidden;/*解决了雨滴离开界面出现上下滚动条的问题*/
+}
+div{
+    position: absolute;
+    width: 5px;
+    height: 200px;
+    border-radius: 0px 0px 5px 5px;/*设置成圆角*/ 
+    animation: dropRain 5s linear infinite;/*引用dropRain关键帧，俩个帧之间过渡用五秒，linear表示线性匀速，infinite循环无限次*/
+}
+/*定义关键帧*/
+@keyframes dropRain {
+    0% {
+        transform: translateY(-200px);/*参考自身移动,因为高是200px，所以-200px，可以在视窗之外*/
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+div:nth-child(3n+1){
+    background: linear-gradient(transparent, deeppink);/*transparent透明*/
+    /* background-color: #fff; */
+}
+div:nth-child(3n+2){
+    background: linear-gradient(transparent, gold);
+}
+div:nth-child(3n+3){
+    background: linear-gradient(transparent, skyblue);
+}

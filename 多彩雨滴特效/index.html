@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多彩雨滴特效</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!--
+        1.创建雨滴dom元素
+        2.设置样式
+        3.设置动画
+    -->
+    <script>
+        //定义雨滴个数
+        let n=200
+        const body= document.querySelector('body')
+        //循环创建dom元素，并插入到dom元素中
+        for(let i=0; i<n; i++){
+            //创建div标签
+            const drop = document.createElement('div')
+            //给div也就是雨滴设置宽度
+            drop.style.left = Math.random()*body.offsetWidth+'px'// offsetWidth 水平方向 width + 左右padding + 左右border-width
+            //让每个雨滴有先后顺序(设置动画延迟),为正数表示延迟，为负数表示提前，提前的话就解决了一开始全部排列在页面上方的问题
+            drop.style.animationDelay = Math.random() * (-5)+'s'
+            //让每个雨滴有块有慢
+            drop.style.animationDuration = 1+Math.random()*5+'s'
+            //放到body里面去，appendChild表示追加到子元素的末尾
+            body.appendChild(drop)
+        }
+    </script>
+</body>
+</html>
