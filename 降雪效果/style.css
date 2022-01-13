@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#snow-fall{
+    background-color: #000;
+    height: 100vh;
+}
+
+#snow-fall img{
+    width: 100%;
+    position: absolute;
+    height: 100vh;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.particles-js-canvas-el{
+    position: absolute;
+    z-index: 100;
+}
