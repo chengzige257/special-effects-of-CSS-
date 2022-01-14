@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视差滚动</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .shell{
+        height: 100vh;
+        overflow-x: hidden;
+        perspective: 3px;/*translateZ配合使用，translateZ为正时，perspective越大，图越小；translateZ为负时，perspective越大，图越大*/
+    }
+    .shell div{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        letter-spacing: 2px;/* 属性增加或减少字符间的空白（字符间距）*/
+    }
+    .image{
+        transform: translateZ(-1px) scale(1.35);/*在3D空间中沿着Z轴后退一个像素再放大1.6倍,后退一个像素图片会变小，然后再放大*/
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        z-index: -1;
+    }
+    .text{
+        height: 50vh;/*撑开和heading的距离*/
+    }
+    .text h1{
+        color: #000;
+    }
+    .heading {
+        z-index: -1;
+        transform: translateY(-30vh) translateZ(1px);
+        color:#fff;
+        font-size:30px;
+    }
+</style>
+<body>
+    <div class="shell">
+        <div class="image"  style="background-image: url(1.jpeg)"></div>
+        <div class="heading">
+            <h1>When you are confused</h1>
+        </div>
+        <div class="text">
+            <h1>Set goals in your mind</h1>
+        </div>
+
+        <div class="image"  style="background-image: url(2.jpeg)"></div>
+        <div class="heading">
+            <h1>When you're down</h1>
+        </div>
+        <div class="text">
+            <h1>Try to wake up the beast in your heart</h1>
+        </div>
+
+        <div class="image"  style="background-image: url(3.jpeg)"></div>
+        <div class="heading">
+            <h1>When people leave you</h1>
+        </div>
+        <div class="text">
+            <h1>It's time to start your season</h1>
+        </div>
+
+        <div class="image"  style="background-image: url(4.jpeg)"></div>
+        <div class="heading">
+            <h1>Come on,stranger.</h1>
+        </div>
+    </div>
+    
+</body>
+</html>
